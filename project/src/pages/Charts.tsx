@@ -36,7 +36,7 @@ export const Charts: React.FC = () => {
   useEffect(() => {
     let interval: any;
     const fetchChartData = () => {
-      axios.get('http://localhost:3001/api/mysql/chart-data')
+      axios.get('https://iotbeta-backend.onrender.com/api/mysql/chart-data')
         .then(res => {
           const newData = res.data;
           if (JSON.stringify(newData) !== JSON.stringify(chartData)) {
@@ -62,7 +62,7 @@ export const Charts: React.FC = () => {
   useEffect(() => {
     let interval: any;
     const fetchStatusHistory = () => {
-      axios.get('http://localhost:3001/api/mysql/sensor-status-history')
+      axios.get('https://iotbeta-backend.onrender.com/api/mysql/sensor-status-history')
         .then(res => setStatusHistory(res.data))
         .catch(() => setStatusHistory([]));
     };
