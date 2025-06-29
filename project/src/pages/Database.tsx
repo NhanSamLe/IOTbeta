@@ -45,9 +45,9 @@ export const Database: React.FC = () => {
       if (firstLoad) setLoading(true);
       try {
         const [sensorRes, buttonRes, historyRes] = await Promise.all([
-          axios.get('http://localhost:3001/api/mysql/sensor_data'),
-          axios.get('http://localhost:3001/api/mysql/button_states'),
-          axios.get('http://localhost:3001/api/mysql/history_log'),
+          axios.get('https://iotbeta-backend.onrender.com/api/mysql/sensor_data'),
+          axios.get('https://iotbeta-backend.onrender.com/api/mysql/button_states'),
+          axios.get('https://iotbeta-backend.onrender.com/api/mysql/history_log'),
         ]);
         // Cập nhật chỉ khi dữ liệu thực sự thay đổi, tránh setState liên tục gây nhấp nháy
         setSensorData(prev => JSON.stringify(sensorRes.data) !== JSON.stringify(prev) ? sensorRes.data : prev);
