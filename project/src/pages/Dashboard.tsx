@@ -190,7 +190,7 @@ export const Dashboard: React.FC = () => {
   useEffect(() => {
     const fetchSensorData = async () => {
       try {
-        const res = await axios.get('http://localhost:3001/api/sensor');
+        const res = await axios.get('https://iotbeta-backend.onrender.com/api/sensor');
         setSensorData({
           id: res.data.id,
           sensor1Distance: res.data.sensor1,
@@ -211,7 +211,7 @@ export const Dashboard: React.FC = () => {
   useEffect(() => {
     const fetchButtonStates = async () => {
       try {
-        const res = await axios.get('http://localhost:3001/api/buttons');
+        const res = await axios.get('https://iotbeta-backend.onrender.com/api/buttons');
         setButtons((prev) =>
           prev.map((btn, idx) => ({
             ...btn,
@@ -248,7 +248,7 @@ export const Dashboard: React.FC = () => {
           : btn
       );
       axios
-        .post('http://localhost:3001/api/buttons', {
+        .post('https://iotbeta-backend.onrender.com/api/buttons', {
           states: newButtons.map((b) => (b.isPressed ? 1 : 0)),
         })
         .catch((err) => {
@@ -267,7 +267,7 @@ export const Dashboard: React.FC = () => {
   const handleSaveThresholds = async () => {
     setSaving(true);
     try {
-      await axios.post('http://localhost:3001/api/thresholds', {
+      await axios.post('https://iotbeta-backend.onrender.com/api/thresholds', {
         danger: pendingDanger,
         warning: pendingWarning,
       });
